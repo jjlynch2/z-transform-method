@@ -10,6 +10,7 @@
 #include <RInside.h>
 #include <fstream>
 #include<cstring>
+#include<ctime>
 using namespace std;
 #include "SEinventory.h"
 #include "CSVRow.h"
@@ -54,21 +55,31 @@ void help_message(int err_message)
 	cerr<<"--LOOCV: Leave one out cross validation (Performed on training data)"<<endl;
 	cerr<<"--descLen: Maximum skeletal element name length (default 50)"<<endl;
 	cerr<<"--header: The first line of the input files is the header line (default true)"<<endl;	
-	
+	cerr<<"--time: Print the start and end time for the program"<<endl;
+
 	cerr<<endl;
-        cerr<<endl;
-        cerr<<endl;
+	cerr<<endl;
+	cerr<<endl;
 	cerr<<"Example Usage:"<<endl;
 	cerr<<endl;
 
 	cerr<<"Perform Leave-One-Out Crossvalidation on Reference population set using unweighted Z method"<<endl; 
 	cerr<<"./SE_Compare --rTrain fileR --lTrain fileL --uweightedZ TRUE"<<endl;
 	cerr<<endl;	
-	
+
 	cerr<<"Use t-test method to obtain p-values for test data using a reference population set"<<endl;
 	cerr<<"./SE_Compare --rTrain fileR --lTrain fileL --rClass file2R --lClass file2L --tTest TRUE"<<endl;
 
-	
+	cerr<<endl;
+	cerr<<endl;
+	cerr<<endl;
+	cerr<<"Input file format (Tab delimited file):"<<endl;
+	cerr<<"ID "<<"[TAB]"<<" Size "<<"[TAB]"<<" Element "<<"[TAB]"<<" Measure 1 "<<"[TAB]"<<" Measure 2 "<<"[TAB]"<<" ... "<<"[TAB]"<<" Measure N"<<endl;
+	cerr<<endl;
+	cerr<<endl;
+
+
+
 	exit(911);
 }
 
@@ -101,6 +112,7 @@ int main(int argc, char * argv[])
 	//Other Parameters
 	int seNameLen = 50;                    //Maximum skeletal element length
 	bool header = TRUE;					 //Are there headers on the input files: default true
+	bool timeT = FALSE;
 
 
 	//user options
@@ -121,6 +133,7 @@ int main(int argc, char * argv[])
 
 	string seNameLenS = "--descLen";
 	string headerS = "--header";
+	string timeS = "--time";
 
 	for(int i = 1; i < argc; i+=2)
 	{
@@ -282,12 +295,31 @@ int main(int argc, char * argv[])
 			}
 		}
 
+		if(argv[i] == timeS)
+		{
+			string TorF = argv[i+1];
+			if(TorF.compare("FALSE") == 0 || TorF.compare("F") == 0)
+			{
+				timeT = false;
+			}else{
+				if(TorF.compare("TRUE") == 0 || TorF.compare("T") == 0)
+				{
+					timeT = true;
+				}
+			}
+		}
+
 	}
+
+	clock_t t1,t2;
+	t1=clock();
 
 	//PARAMETER CHECKING//
 	//User forgot a file, oops
 	if(argc == 1 ||  rightFileTrain.compare("noFile") == 0 || leftFileTrain.compare("noFile") == 0)
 	{
+		cerr<<"TRAINING FILES NOT FOUND"<<endl;
+		cerr<<endl;
 		help_message(notFound);
 	}
 
@@ -296,13 +328,15 @@ int main(int argc, char * argv[])
 		LOOCV = false; KFCV = false;
 	}
 
-	if(argc == 1 ||  rightFileClass.compare("noFile") != 0 || leftFileClass.compare("noFile") == 0)
+	if(argc == 1 ||  (rightFileClass.compare("noFile") != 0 && leftFileClass.compare("noFile") == 0))
 	{
+		cerr<<"MISSING THE LEFT CLASSIFICATION FILE"<<endl;
 		help_message(notFound);
 	}
 
-	if(argc == 1 ||  rightFileClass.compare("noFile") == 0 || leftFileClass.compare("noFile") != 0)
+	if(argc == 1 ||  (rightFileClass.compare("noFile") == 0 && leftFileClass.compare("noFile") != 0))
 	{
+		cerr<<"MISSING THE RIGHT CLASSIFICATION FILE"<<endl;
 		help_message(notFound);
 	}
 
@@ -604,23 +638,26 @@ int main(int argc, char * argv[])
 
 			for(int i = 0; i < numRecordsClass; i++)
 			{
-				double crossZvals[numMeasurementsTrain]; double weights[numMeasurementsTrain];
-				for(int k = 0; k < numMeasurementsTrain; k++)
+				for(int j = 0; j < numRecordsClass; j++)
 				{
-					crossDvals[k][i] = leftClass.getRecordMeas(i,k) - rightClass.getRecordMeas(i,k);
+					double crossZvals[numMeasurementsTrain]; double weights[numMeasurementsTrain];
+					for(int k = 0; k < numMeasurementsTrain; k++)
+					{
+						crossDvals[k][i] = leftClass.getRecordMeas(i,k) - rightClass.getRecordMeas(j,k);
 
-					tTest<double> Tstats;
+						tTest<double> Tstats;
 
-					double tStat = Tstats.getTStatistic(crossDvals[k], i, means[k], vars[k]);
-					crossPvals[k][i] = Tstats.twoTailedPVal(tStat, numRecordsTrain);
+						double tStat = Tstats.getTStatistic(crossDvals[k], i, means[k], vars[k]);
+						crossPvals[k][i] = Tstats.twoTailedPVal(tStat, numRecordsTrain);
 
-					crossZvals[k] = zScoreMethod.getZVal1T(crossPvals[k][i]); //zScoreMethod.getZVal2T(crossPvals[k][j]);
-					weights[k] = 1;
+						crossZvals[k] = zScoreMethod.getZVal1T(crossPvals[k][i]); //zScoreMethod.getZVal2T(crossPvals[k][j]);
+						weights[k] = 1;
 
+					}
+
+					double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain);
+					cout<<leftClass.getRecordId(i)<<"\t"<<rightClass.getRecordId(j)<<"\t"<<finalP<<endl;
 				}
-
-				double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain);
-				cout<<leftClass.getRecordId(i)<<","<<rightClass.getRecordId(i)<<","<<finalP<<endl;
 			}
 		}
 
@@ -670,23 +707,26 @@ int main(int argc, char * argv[])
 
 			for(int i = 0; i < numRecordsClass; i++)
 			{
-				double crossZvals[numMeasurementsTrain]; double weights[numMeasurementsTrain];
-				for(int k = 0; k < numMeasurementsTrain; k++)
+				for(int j = 0; j < numRecordsClass; j++)
 				{
-					crossDvals[k][i] = leftClass.getRecordMeas(i,k) - rightClass.getRecordMeas(i,k);
+					double crossZvals[numMeasurementsTrain]; double weights[numMeasurementsTrain];
+					for(int k = 0; k < numMeasurementsTrain; k++)
+					{
+						crossDvals[k][i] = leftClass.getRecordMeas(i,k) - rightClass.getRecordMeas(j,k);
 
-					tTest<double> Tstats;
+						tTest<double> Tstats;
 
-					double tStat = Tstats.getTStatistic(crossDvals[k], i, means[k], vars[k]);
-					crossPvals[k][i] = Tstats.twoTailedPVal(tStat, numRecordsTrain);
+						double tStat = Tstats.getTStatistic(crossDvals[k], i, means[k], vars[k]);
+						crossPvals[k][i] = Tstats.twoTailedPVal(tStat, numRecordsTrain);
 
-					crossZvals[k] = zScoreMethod.getZVal1T(crossPvals[k][i]); //zScoreMethod.getZVal2T(crossPvals[k][j]);
-					weights[k] =  abs(tStat);
+						crossZvals[k] = zScoreMethod.getZVal1T(crossPvals[k][i]); //zScoreMethod.getZVal2T(crossPvals[k][j]);
+						weights[k] =  abs(tStat);
 
+					}
+
+					double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain);
+					cout<<leftClass.getRecordId(i)<<"\t"<<rightClass.getRecordId(j)<<"\t"<<finalP<<endl;
 				}
-
-				double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain);
-				cout<<leftClass.getRecordId(i)<<","<<rightClass.getRecordId(i)<<","<<finalP<<endl;
 			}
 		}
 
@@ -735,23 +775,26 @@ int main(int argc, char * argv[])
 
 			for(int i = 0; i < numRecordsClass; i++)
 			{
-				double crossZvals[numMeasurementsTrain]; double weights[numMeasurementsTrain];
-				for(int k = 0; k < numMeasurementsTrain; k++)
+				for(int j = 0; j < numRecordsClass; j++)
 				{
-					crossDvals[k][i] = leftClass.getRecordMeas(i,k) - rightClass.getRecordMeas(i,k);
+					double crossZvals[numMeasurementsTrain]; double weights[numMeasurementsTrain];
+					for(int k = 0; k < numMeasurementsTrain; k++)
+					{
+						crossDvals[k][i] = leftClass.getRecordMeas(i,k) - rightClass.getRecordMeas(j,k);
 
-					tTest<double> Tstats;
+						tTest<double> Tstats;
 
-					double tStat = Tstats.getTStatistic(crossDvals[k], i, means[k], vars[k]);
-					crossPvals[k][i] = Tstats.twoTailedPVal(tStat, numRecordsTrain);
+						double tStat = Tstats.getTStatistic(crossDvals[k], i, means[k], vars[k]);
+						crossPvals[k][i] = Tstats.twoTailedPVal(tStat, numRecordsTrain);
 
-					crossZvals[k] = zScoreMethod.getZVal1T(crossPvals[k][i]); //zScoreMethod.getZVal2T(crossPvals[k][j]);
-					weights[k] =  sqrt(vars[k]);
+						crossZvals[k] = zScoreMethod.getZVal1T(crossPvals[k][i]); //zScoreMethod.getZVal2T(crossPvals[k][j]);
+						weights[k] =  sqrt(vars[k]);
 
+					}
+
+					double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain);
+					cout<<leftClass.getRecordId(i)<<"\t"<<rightClass.getRecordId(j)<<"\t"<<finalP<<endl;
 				}
-
-				double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain);
-				cout<<leftClass.getRecordId(i)<<","<<rightClass.getRecordId(i)<<","<<finalP<<endl;
 			}
 		}
 
@@ -777,16 +820,19 @@ int main(int argc, char * argv[])
 
 			for(int i = 0; i < numRecordsClass; i++)
 			{
-				crossDvalSums[i] = 0;
-				for(int k = 0; k < numMeasurementsClass; k++)
+				for(int j = 0; j < numRecordsClass; j++)
 				{
-					crossDvalSums[i]+=rightClass.getRecordMeas(i,k)-leftClass.getRecordMeas(i,k);
+					crossDvalSums[i] = 0;
+					for(int k = 0; k < numMeasurementsClass; k++)
+					{
+						crossDvalSums[i]+=rightClass.getRecordMeas(i,k)-leftClass.getRecordMeas(j,k);
+					}
+
+					double tStat = Tstats.getTStatistic(crossDvalSums, i, 0, SumVar);
+					double pVal = Tstats.twoTailedPVal(tStat, numRecordsTrain);
+
+					cout<<leftClass.getRecordId(i)<<"\t"<<rightClass.getRecordId(j)<<"\t"<<pVal<<endl;
 				}
-
-				double tStat = Tstats.getTStatistic(crossDvalSums, i, 0, SumVar);
-				double pVal = Tstats.twoTailedPVal(tStat, numRecordsTrain);
-
-				cout<<leftClass.getRecordId(i)<<","<<rightClass.getRecordId(i)<<","<<pVal<<endl;
 			}
 		}
 
@@ -812,16 +858,19 @@ int main(int argc, char * argv[])
 
 			for(int i = 0; i < numRecordsClass; i++)
 			{
-				crossDvalSums[i] = 0;
-				for(int k = 0; k < numMeasurementsClass; k++)
+				for(int j = 0; j < numRecordsClass; j++)
 				{
-					crossDvalSums[i]+=rightClass.getRecordMeas(i,k)-leftClass.getRecordMeas(i,k);
+					crossDvalSums[i] = 0;
+					for(int k = 0; k < numMeasurementsClass; k++)
+					{
+						crossDvalSums[i]+=rightClass.getRecordMeas(i,k)-leftClass.getRecordMeas(j,k);
+					}
+
+					double tStat = Tstats.getTStatistic(crossDvalSums, i, SumMean, SumVar);
+					double pVal = Tstats.twoTailedPVal(tStat, numRecordsTrain);
+
+					cout<<leftClass.getRecordId(i)<<"\t"<<rightClass.getRecordId(j)<<"\t"<<pVal<<endl;
 				}
-
-				double tStat = Tstats.getTStatistic(crossDvalSums, i, SumMean, SumVar);
-				double pVal = Tstats.twoTailedPVal(tStat, numRecordsTrain);
-
-				cout<<leftClass.getRecordId(i)<<","<<rightClass.getRecordId(i)<<","<<pVal<<endl;
 			}
 		}
 
@@ -847,19 +896,22 @@ int main(int argc, char * argv[])
 
 			for(int i = 0; i < numRecordsClass; i++)
 			{
-				crossDvalSums[i] = 0;
-				for(int k = 0; k < numMeasurementsTrain; k++)
+				for(int j = 0; j < numRecordsClass; j++)
 				{
-					crossDvalSums[i]+=abs(rightTrain.getRecordMeas(i,k)-leftTrain.getRecordMeas(i,k));
+					crossDvalSums[i] = 0;
+					for(int k = 0; k < numMeasurementsTrain; k++)
+					{
+						crossDvalSums[i]+=abs(leftTrain.getRecordMeas(i,k)-rightTrain.getRecordMeas(j,k));
+					}
+
+					crossDvalSums[i] = pow(crossDvalSums[i] + 0.00005, 0.33);
+
+					double tStat = Tstats.getTStatistic(crossDvalSums, i, SumMean, SumVar);
+					double pVal = Tstats.twoTailedPVal(tStat, numRecordsTrain);
+
+					pVal=pVal/2;
+					cout<<leftClass.getRecordId(i)<<"\t"<<rightClass.getRecordId(j)<<"\t"<<pVal<<endl;
 				}
-
-				crossDvalSums[i] = pow(crossDvalSums[i] + 0.00005, 0.33);
-
-				double tStat = Tstats.getTStatistic(crossDvalSums, i, SumMean, SumVar);
-				double pVal = Tstats.twoTailedPVal(tStat, numRecordsTrain);
-
-				pVal=pVal/2;
-				cout<<leftClass.getRecordId(i)<<","<<rightClass.getRecordId(i)<<","<<pVal<<endl;
 			}
 
 		}	
@@ -947,7 +999,7 @@ int main(int argc, char * argv[])
 				}
 
 				double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain); //zScoreMethod.combineZ2T(crossZvals, weights, cors, numMeasurements);
-				cout<<leftTrain.getRecordId(j)<<","<<rightTrain.getRecordId(i)<<","<<finalP<<endl;
+				cout<<leftTrain.getRecordId(j)<<"\t"<<rightTrain.getRecordId(i)<<"\t"<<finalP<<endl;
 			}
 		}
 
@@ -1049,7 +1101,7 @@ int main(int argc, char * argv[])
 				}
 
 				double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain); //zScoreMethod.combineZ2T(crossZvals, weights, cors, numMeasurements);
-				cout<<leftTrain.getRecordId(j)<<","<<rightTrain.getRecordId(i)<<","<<finalP<<endl;
+				cout<<leftTrain.getRecordId(j)<<"\t"<<rightTrain.getRecordId(i)<<"\t"<<finalP<<endl;
 			}
 		}
 
@@ -1152,7 +1204,7 @@ int main(int argc, char * argv[])
 				}
 
 				double finalP = zScoreMethod.combineZ(crossZvals, weights, cors, numMeasurementsTrain); //zScoreMethod.combineZ2T(crossZvals, weights, cors, numMeasurements);
-				cout<<leftTrain.getRecordId(j)<<","<<rightTrain.getRecordId(i)<<","<<finalP<<endl;
+				cout<<leftTrain.getRecordId(j)<<"\t"<<rightTrain.getRecordId(i)<<"\t"<<finalP<<endl;
 			}
 		}
 
@@ -1242,7 +1294,7 @@ int main(int argc, char * argv[])
 				double crossZvals[numMeasurementsTrain]; double weights[numMeasurementsTrain];
 				for(int k = 0; k < numMeasurementsTrain; k++)
 				{
-					crossDvals[k][j] = rightTrain.getRecordMeas(i,k)-leftTrain.getRecordMeas(j,k);
+					crossDvals[k][j] = leftTrain.getRecordMeas(i,k)-rightTrain.getRecordMeas(j,k);
 					tTest<double> Tstats;
 
 					double tStat = Tstats.getTStatistic(crossDvals[k], j, adjMean[k], adjVars[k]);
@@ -1255,7 +1307,7 @@ int main(int argc, char * argv[])
 				int numTest = numMeasurementsTrain - minSig + 1;
 
 				double finalP = zScoreMethod.combineZ2TOrdered(crossZvals, weights, cors, orderZ, numTest, numMeasurementsTrain);
-				cout<<leftTrain.getRecordId(j)<<","<<rightTrain.getRecordId(i)<<","<<finalP<<endl;
+				cout<<leftTrain.getRecordId(j)<<"\t"<<rightTrain.getRecordId(i)<<"\t"<<finalP<<endl;
 			}
 		}
 
@@ -1306,14 +1358,14 @@ int main(int argc, char * argv[])
 				crossDvalSums[j] = 0;
 				for(int k = 0; k < numMeasurementsTrain; k++)
 				{
-					crossDvalSums[j]+=(rightTrain.getRecordMeas(i,k)-leftTrain.getRecordMeas(j,k));
+					crossDvalSums[j]+=(leftTrain.getRecordMeas(i,k)-rightTrain.getRecordMeas(j,k));
 				}
 
 
 				double tStat = Tstats.getTStatistic(crossDvalSums, j, 0, adjVar);
 				double pVal = Tstats.twoTailedPVal(tStat, numRecordsTrain-numLO);
 
-				cout<<leftTrain.getRecordId(j)<<","<<rightTrain.getRecordId(i)<<","<<pVal<<endl;
+				cout<<leftTrain.getRecordId(j)<<"\t"<<rightTrain.getRecordId(i)<<"\t"<<pVal<<endl;
 
 			}
 		}
@@ -1353,13 +1405,13 @@ int main(int argc, char * argv[])
 				crossDvalSums[j] = 0;
 				for(int k = 0; k < numMeasurementsTrain; k++)
 				{
-					crossDvalSums[j]+=(rightTrain.getRecordMeas(i,k)-leftTrain.getRecordMeas(j,k));
+					crossDvalSums[j]+=(leftTrain.getRecordMeas(i,k)-rightTrain.getRecordMeas(j,k));
 				}
 
 				double tStat = Tstats.getTStatistic(crossDvalSums, j, adjMean, adjVar);
 				double pVal = Tstats.twoTailedPVal(tStat, numRecordsTrain-numLO);
 
-				cout<<leftTrain.getRecordId(j)<<","<<rightTrain.getRecordId(i)<<","<<pVal<<endl;
+				cout<<leftTrain.getRecordId(j)<<"\t"<<rightTrain.getRecordId(i)<<"\t"<<pVal<<endl;
 
 			}
 		}
@@ -1400,7 +1452,7 @@ int main(int argc, char * argv[])
 				crossDvalSums[j] = 0;
 				for(int k = 0; k < numMeasurementsTrain; k++)
 				{
-					crossDvalSums[j]+=abs(rightTrain.getRecordMeas(i,k)-leftTrain.getRecordMeas(j,k));
+					crossDvalSums[j]+=abs(leftTrain.getRecordMeas(i,k)-rightTrain.getRecordMeas(j,k));
 				}
 
 				crossDvalSums[j] = pow(crossDvalSums[j] + 0.00005, 0.33);
@@ -1410,7 +1462,7 @@ int main(int argc, char * argv[])
 
 				pVal = pVal/2;
 
-				cout<<leftTrain.getRecordId(j)<<","<<rightTrain.getRecordId(i)<<","<<pVal<<endl;
+				cout<<leftTrain.getRecordId(j)<<"\t"<<rightTrain.getRecordId(i)<<"\t"<<pVal<<endl;
 			}
 		}
 
@@ -1427,6 +1479,13 @@ int main(int argc, char * argv[])
 
 	delete [] Dvals;
 	delete [] cors;
+
+	t2=clock();
+	float diff ((float)t2-(float)t1);
+	float seconds = diff/CLOCKS_PER_SEC;
+	if(timeT)
+		cerr<<"RUN TIME "<<seconds<<endl;
+
 
 	return 0;
 }
