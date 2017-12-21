@@ -33,6 +33,13 @@ The resulting binary **SE_Compare** will be located in the **build** directory.
 ## Binary
 Precompiled binary versions of SE Compare are available for Linux and Mac OS.  
 
+```
+SE_Compare_x86_64-pc-linux-gnu
+```
+```
+SE_Compare_Mac_OS
+```
+
 # Input File Format
 The SE Compare tool takes tab delimeted files as input. These files must contain the following columns in order:
 `Skeletal Element ID`    `Side`    `Element Type`    `Measure 1`    `Measure 2`    `...`    `Measure N`     
