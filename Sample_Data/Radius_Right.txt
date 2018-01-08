@@ -1,0 +1,131 @@
+ID	Side	Element	Rad_01R	Rad_05R	Rad_06R
+576	Right	Radius	313	15.1	19.3
+847	Right	Radius	217	9.7	13.4
+1153	Right	Radius	208.5	11.7	15.4
+1523	Right	Radius	226	11	16.9
+UT1-87	Right	Radius	258	13	16
+UT10-88	Right	Radius	251	14	18
+UT11-93	Right	Radius	233	12	18
+UT11-95	Right	Radius	228	11	15
+UT12-92	Right	Radius	232	11	16
+UT12-94	Right	Radius	252	13	18
+UT16-93	Right	Radius	271	14	16
+UT17-91	Right	Radius	240	13	19
+UT17-92	Right	Radius	255	13	17
+UT2-81	Right	Radius	254	14	17
+UT2-93	Right	Radius	257	13	17
+UT20-94	Right	Radius	233	11	9
+UT4-91	Right	Radius	231	14	18
+UT5-95	Right	Radius	249	13	16
+UT6-86	Right	Radius	255	13	18
+UT6-97	Right	Radius	231	10	14
+UT71-1	Right	Radius	219	10	14
+UT71-3B	Right	Radius	240	13	17
+UT72-3	Right	Radius	250	13	15
+UT73-1	Right	Radius	243	11	15
+UT77-9	Right	Radius	261	13	17
+UT78-14	Right	Radius	229	12	15
+UT79-13	Right	Radius	269	12	17
+UT83-1	Right	Radius	219	9	13
+UT83-24	Right	Radius	247	11	15
+UT84-14	Right	Radius	241	13	18
+UT84-3	Right	Radius	268	12	16
+UT85-2	Right	Radius	226	12	15
+UT85-26	Right	Radius	278	12	20
+UT85-35	Right	Radius	269	12	15
+UT85-4	Right	Radius	264	12	19
+UT85-8	Right	Radius	239	10	14
+UT86-30	Right	Radius	275	14	18
+UT87-20	Right	Radius	256	14	17
+UT87-8	Right	Radius	221	10	15
+UT89-1	Right	Radius	216	10	12
+UT89-10	Right	Radius	253	14	18
+UT89-13/FA-89-67	Right	Radius	223	10	15
+UT89-23	Right	Radius	252	13	17
+UT89-9	Right	Radius	150	8	10
+UT9-87	Right	Radius	255	11	13
+UT90-28	Right	Radius	269	13	17
+UT90-44	Right	Radius	277	14	19
+UT90-8	Right	Radius	257	12	16
+UT91-10	Right	Radius	280	14	18
+UT91-30	Right	Radius	247	12	18
+UT91-34	Right	Radius	253	13	15
+UT91-36	Right	Radius	261	13	18
+UT91-42	Right	Radius	282	14	16
+UT92-15	Right	Radius	258	12	19
+UT93-10	Right	Radius	264	12	16
+UT93-42	Right	Radius	253	13	16
+UT94-10	Right	Radius	268	14	16
+UT95-10	Right	Radius	226	9	13
+UT95-15	Right	Radius	106	7	9
+UT95-25	Right	Radius	269	12	17
+UT96-32	Right	Radius	164	8	11
+UT96-33	Right	Radius	236	11	14
+UT97-185	Right	Radius	244	11	16
+UT99-3	Right	Radius	220	10	12
+UT13-88	Right	Radius	262	14.8	19.6
+RVO2/282B	Right	Radius	271	13.1	20
+RVO2/276B	Right	Radius	244	12.6	15.7
+RVO2/310B	Right	Radius	236	13.1	18.2
+RVO2/575B	Right	Radius	253	14.3	17.9
+RVO2/442B	Right	Radius	245	12.6	17.8
+RVO2/186B	Right	Radius	256	12.8	16
+RVO2/142B	Right	Radius	256	13.3	16
+RVO2/180B	Right	Radius	254	14	17.5
+RVO2/49B	Right	Radius	241	13.3	20.8
+RVO2/117B	Right	Radius	267.5	12.6	18.9
+ZJO6/560B	Right	Radius	254	14.1	20.4
+ZJO6/437B	Right	Radius	265	14.8	17.6
+ZJO6/644B	Right	Radius	265	14.3	17.4
+ZJO6/224B	Right	Radius	258	13.6	18.2
+ZJO6/628B	Right	Radius	251	12.3	15.5
+GLO1/177B	Right	Radius	246	12.9	16.6
+ZJO6/491B	Right	Radius	245.5	12.1	16.5
+GLO1/353B	Right	Radius	263	12.5	16.8
+GLO1/340B	Right	Radius	249	13.8	17.5
+GLO7/031B	Right	Radius	235	12	14.8
+ZJO6/155B	Right	Radius	250	12.7	16.1
+GLO7/026B	Right	Radius	241	12.4	18.1
+CR12/179B	Right	Radius	238	13.3	19.2
+2002-074	Right	Radius	252	12	15.8
+27-7-20/61062.0	Right	Radius	244	11.44	15.02
+27-7-20/61079.0	Right	Radius	216	10.1	13.66
+93-3-20/48009.0	Right	Radius	217	9.56	12.81
+27-7-20/61022.0	Right	Radius	232	9.79	13.36
+27-7-20/61002.0	Right	Radius	222	9.76	13.52
+2002-150-I-01	Right	Radius	246	12	14.3
+325270	Right	Radius	190	9	12.4
+325266	Right	Radius	241	13.3	16.9
+325268	Right	Radius	251	13	14.9
+325269	Right	Radius	240	12.8	15.4
+325267	Right	Radius	229	12.2	16.1
+363722	Right	Radius	251	11.9	15
+363723	Right	Radius	220	10.5	15.1
+364426	Right	Radius	222	10.6	14.2
+364428	Right	Radius	246	10.4	14.5
+2001-008-I-01	Right	Radius	253	15.5	12.2
+2011-078-I-01	Right	Radius	268	14.5	18.8
+2011-026-I-01	Right	Radius	282	13	15
+2011-027-I-01	Right	Radius	267	14	17
+2011-028-I-01	Right	Radius	239	12	16
+2009-130-I-02	Right	Radius	233	12	15
+DS 001	Right	Radius	253	11.2	14.5
+DS 034	Right	Radius	245	12	15.5
+DS 035	Right	Radius	216	13	15.9
+DS 009	Right	Radius	232	13.4	16.1
+DS 033	Right	Radius	229	13.8	14.8
+DS 006	Right	Radius	254	13.9	18.2
+DS 010	Right	Radius	202	9.2	12.1
+DS 007	Right	Radius	217	11.2	15.6
+DS 002	Right	Radius	239	13.8	18.7
+DS 003	Right	Radius	236	12.5	15.5
+DS 004	Right	Radius	235	12.2	15.3
+DS 005	Right	Radius	242	13.1	16.2
+DS 008	Right	Radius	230	11.6	15.2
+2013-115-I-01	Right	Radius	268	14	20
+2013-116-I-01	Right	Radius	270	15.4	18.2
+2013-120-I-01	Right	Radius	260	13	16
+2013-151-I-01	Right	Radius	255	12.2	13.8
+2013-175-I-01	Right	Radius	264	12	14
+2013-176-I-01	Right	Radius	277	13	15
+2013-206-I-01	Right	Radius	250	14	17

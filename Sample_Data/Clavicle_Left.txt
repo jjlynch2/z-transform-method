@@ -1,0 +1,117 @@
+ID	Side	Element	Cla_01	Cla_04	Cla_05
+UT1-87	Left	Clavicle	170	11	11
+UT15-89	Left	Clavicle	168	10	16
+UT17-91	Left	Clavicle	156	13	11
+UT17-92	Left	Clavicle	167	10	13
+UT2-81	Left	Clavicle	163	14	11
+UT2-93	Left	Clavicle	162	14	10
+UT6-86	Left	Clavicle	151	12	10
+UT71-3B	Left	Clavicle	146	11	10
+UT72-3	Left	Clavicle	165	14	11
+UT73-1	Left	Clavicle	133	11	10
+UT74-11	Left	Clavicle	143	11	8
+UT74-5	Left	Clavicle	135	11	8
+UT75-5	Left	Clavicle	140	11	8
+UT77-9	Left	Clavicle	150	12	11
+UT78-17	Left	Clavicle	148	12	9
+UT81-24	Left	Clavicle	137	10	8
+UT82-20	Left	Clavicle	157	14	11
+UT83-1	Left	Clavicle	129	11	8
+UT83-29	Left	Clavicle	151	14	10
+UT84-16	Left	Clavicle	151	10	8
+UT85-18	Left	Clavicle	160	12	10
+UT85-2	Left	Clavicle	132	11	10
+UT85-26	Left	Clavicle	172	11	12
+UT85-30	Left	Clavicle	127	10	10
+UT85-35	Left	Clavicle	162	12	9
+UT85-8	Left	Clavicle	138	11	9
+UT86-15	Left	Clavicle	142	11	9
+UT86-18	Left	Clavicle	169	13	9
+UT86-30	Left	Clavicle	154	15	11
+UT88-22	Left	Clavicle	129	10	11
+UT89-1	Left	Clavicle	125	10	8
+UT89-10	Left	Clavicle	165	14	12
+UT89-13/FA-89-67	Left	Clavicle	143	10	9
+UT89-23	Left	Clavicle	161	14	10
+UT89-24	Left	Clavicle	129	10	7
+UT89-9	Left	Clavicle	100	7	6
+UT90-28	Left	Clavicle	180	13	13
+UT90-44	Left	Clavicle	159	17	13
+UT90-8	Left	Clavicle	156	14	11
+UT91-30	Left	Clavicle	149	13	9
+UT91-34	Left	Clavicle	155	11	8
+UT91-36	Left	Clavicle	152	16	11
+UT91-42	Left	Clavicle	173	16	10
+UT92-15	Left	Clavicle	168	14	11
+UT92-28	Left	Clavicle	131	12	11
+UT93-42	Left	Clavicle	165	14	11
+UT95-15	Left	Clavicle	72	7	4
+UT95-25	Left	Clavicle	166	13	11
+UT96-31	Left	Clavicle	99	6	6
+UT96-32	Left	Clavicle	105	7	8
+UT96-33	Left	Clavicle	142	10	12
+UT96-35	Left	Clavicle	153	12	9
+UT97-185	Left	Clavicle	155	12	11
+UT97-20	Left	Clavicle	155	14	10
+UT98-13	Left	Clavicle	157	11	14
+UT99-3	Left	Clavicle	128	9	7
+RVO2/276B	Left	Clavicle	157	10.9	12.7
+RVO2/089B	Left	Clavicle	154	13.8	14
+RVO2/310B	Left	Clavicle	148	10.6	12.1
+RVO2/417D	Left	Clavicle	163	12.4	9.4
+RVO2/576B	Left	Clavicle	163	12.3	10.3
+RVO2/297B	Left	Clavicle	156	13	9.3
+RVO2/442B	Left	Clavicle	168	14	9.8
+RVO2/186B	Left	Clavicle	168	13.1	9.3
+RVO2/180B	Left	Clavicle	148	13.2	10.5
+RVO2/49B	Left	Clavicle	155	13.1	11.2
+RVO2/117B	Left	Clavicle	165	13.1	10.9
+ZJO6/560B	Left	Clavicle	167	16.1	10.5
+ZJO6/437B	Left	Clavicle	160	12.1	12.8
+ZJO6/224B	Left	Clavicle	173	13.1	11.5
+ZJO6/628B	Left	Clavicle	155	12.6	10.5
+ZJO6/491B	Left	Clavicle	143	11.1	10.1
+ZJO6/155B	Left	Clavicle	174	13.6	12.6
+OLOVO 1/3/1	Left	Clavicle	162	12.5	11.5
+2002-074	Left	Clavicle	167	14.4	9.3
+2002-150-I-02	Left	Clavicle	153	13.3	10
+27-7-20/61062.0	Left	Clavicle	159	11.72	7.38
+27-7-20/61079.0	Left	Clavicle	140	10.7	9.06
+93-3-20/48009.0	Left	Clavicle	132	11.35	8.31
+27-7-20/61022.0	Left	Clavicle	142	9.67	6.28
+27-7-20/61002.0	Left	Clavicle	132	8.18	7.62
+381137	Left	Clavicle	142	10.3	9.4
+385723	Left	Clavicle	130	11.7	9.3
+325270	Left	Clavicle	117	8.4	7.5
+325266	Left	Clavicle	155	11.8	12.9
+325268	Left	Clavicle	156	11.1	11.4
+325269	Left	Clavicle	147	12.5	8.8
+325267	Left	Clavicle	155	12.9	11.4
+363722	Left	Clavicle	150	11.2	9.6
+363723	Left	Clavicle	139	11.4	8.8
+364426	Left	Clavicle	145	11.4	11.5
+364428	Left	Clavicle	147	11.5	9.8
+2001-008-I-01	Left	Clavicle	160	12.1	10.5
+2011-026-I-01	Left	Clavicle	157	13	8
+2011-027-I-01	Left	Clavicle	155	14	10
+2011-028-I-01	Left	Clavicle	173	13	9
+2009-130-I-02	Left	Clavicle	168	10	13
+DS 001	Left	Clavicle	153	12.5	10.8
+DS 034	Left	Clavicle	160	13	11.2
+DS 035	Left	Clavicle	156.5	13.5	12.4
+DS 009	Left	Clavicle	147	14	11.3
+DS 033	Left	Clavicle	146	15	13.3
+DS 006	Left	Clavicle	152.5	12.5	10.9
+DS 011	Left	Clavicle	146	11.6	8.9
+DS 010	Left	Clavicle	139	9.4	7.7
+DS 003	Left	Clavicle	150	13.1	9.3
+DS 004	Left	Clavicle	155.5	11	10.8
+DS 005	Left	Clavicle	155.5	10.8	9.7
+DS 008	Left	Clavicle	146	10.7	9.5
+2013-116-I-01	Left	Clavicle	161	12.4	10.6
+2013-121-I-01	Left	Clavicle	148	12	10.4
+2013-122-I-01	Left	Clavicle	166	15	12
+2013-148-I-01	Left	Clavicle	137	13	9
+2013-175-I-01	Left	Clavicle	161	13	10
+2013-176-I-01	Left	Clavicle	142	16	8
+2013-204-I-01	Left	Clavicle	166	13	11

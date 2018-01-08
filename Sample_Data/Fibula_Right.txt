@@ -1,0 +1,97 @@
+ID	Side	Element	Fib_01R	Fib_02R
+UT1-87	Right	Fibula	396	18
+UT10-88	Right	Fibula	385	18
+UT12-94	Right	Fibula	382	14
+UT16-93	Right	Fibula	424	17
+UT17-91	Right	Fibula	363	17
+UT17-92	Right	Fibula	391	17
+UT2-81	Right	Fibula	385	16
+UT2-93	Right	Fibula	381	17
+UT20-94	Right	Fibula	336	13
+UT5-95	Right	Fibula	385	16
+UT6-86	Right	Fibula	373	17
+UT6-97	Right	Fibula	369	14
+UT81-24	Right	Fibula	336	15
+UT83-1	Right	Fibula	330	12
+UT85-2	Right	Fibula	343	16
+UT85-26	Right	Fibula	419	16
+UT85-8	Right	Fibula	362	14
+UT86-15	Right	Fibula	331	14
+UT87-18	Right	Fibula	386	12
+UT87-20	Right	Fibula	384	15
+UT87-8	Right	Fibula	358	13
+UT88-22	Right	Fibula	339	16
+UT89-1	Right	Fibula	332	13
+UT89-10	Right	Fibula	388	17
+UT89-13/FA-89-67	Right	Fibula	336	12
+UT89-18	Right	Fibula	397	15
+UT89-23	Right	Fibula	384	15
+UT89-24	Right	Fibula	327	13
+UT89-9	Right	Fibula	221	10
+UT9-87	Right	Fibula	382	16
+UT90-4;FA89-172	Right	Fibula	360	16
+UT90-8	Right	Fibula	388	18
+UT91-10	Right	Fibula	424	16
+UT91-30	Right	Fibula	378	15
+UT91-34	Right	Fibula	384	16
+UT92-15	Right	Fibula	401	15
+UT96-31	Right	Fibula	224	9
+UT97-185	Right	Fibula	385	14
+UT98-13	Right	Fibula	377	16
+RVO2/276B	Right	Fibula	351	17.6
+RVO2/310B	Right	Fibula	370	17.1
+RVO2/220B	Right	Fibula	390	17.5
+RVO2/576B	Right	Fibula	374	16.5
+RVO2/297B	Right	Fibula	376	14.5
+RVO2/173B	Right	Fibula	393	16.2
+RVO2/142B	Right	Fibula	384	17.7
+RVO2/180B	Right	Fibula	404	15.4
+RVO2/262B	Right	Fibula	395	18.3
+RVO2/117B	Right	Fibula	416	15.3
+ZJO6/560B	Right	Fibula	386	17.7
+ZJO6/437B	Right	Fibula	401	16.7
+ZJO6/644B	Right	Fibula	401	17.8
+ZJO6/224B	Right	Fibula	406	15
+ZJO6/628B	Right	Fibula	379	15.4
+GLO1/177B	Right	Fibula	386	15.5
+GLO1/353B	Right	Fibula	398	14.4
+GLO1/340B	Right	Fibula	389	15.1
+ZJO6/582B	Right	Fibula	394	17
+ZJO6/258B	Right	Fibula	396	16.6
+GLO7/026B	Right	Fibula	370	16.1
+27-7-20/61062.0	Right	Fibula	355	14.18
+27-7-20/61079.0	Right	Fibula	309	13.73
+93-3-20/48009.0	Right	Fibula	330	14.02
+27-7-20/61022.0	Right	Fibula	346	13
+381137	Right	Fibula	338	13.9
+385723	Right	Fibula	320	17.4
+325270	Right	Fibula	295	12.3
+325266	Right	Fibula	365	18.1
+325268	Right	Fibula	368	15.4
+325269	Right	Fibula	336	12.9
+363722	Right	Fibula	356	13.1
+363723	Right	Fibula	326	13.6
+364428	Right	Fibula	359	14.2
+2001-008-I-01	Right	Fibula	373	15.2
+2011-078-I-01	Right	Fibula	422	14.6
+2011-026-I-01	Right	Fibula	401	16
+2011-027-I-01	Right	Fibula	399	17
+DS 001	Right	Fibula	375	17
+DS 034	Right	Fibula	359	16.9
+DS 035	Right	Fibula	331	16.9
+DS 009	Right	Fibula	340.5	15
+DS 033	Right	Fibula	349	15.1
+DS 006	Right	Fibula	385	20.1
+DS 010	Right	Fibula	309	9.52
+DS 007	Right	Fibula	345.5	13.9
+DS 002	Right	Fibula	346	18
+DS 003	Right	Fibula	362.5	14.8
+DS 004	Right	Fibula	354	16.6
+DS 005	Right	Fibula	336	17.9
+2013-115-I-01	Right	Fibula	398	15
+2013-116-I-01	Right	Fibula	387	19.4
+2013-120-I-01	Right	Fibula	389	14.5
+2013-148-I-01	Right	Fibula	334	15
+2013-151-I-01	Right	Fibula	390	14.7
+2013-175-I-01	Right	Fibula	389	16
+2013-213-I-01	Right	Fibula	405	14.5
