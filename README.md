@@ -62,5 +62,7 @@ Use t-test method to obtain p-values for test data using a reference population 
 
 # Sample Data
 
-Sample data for leave-one-out validation and assigning p-values to test data sets are located in the Sample_Data directory 
+Sample data for leave-one-out validation and assigning p-values to test data sets are located in the Sample_Data directory.
+
+The data are a subset of the DPAA CIL Osteometric Reference Data Set used for the Z-transform method by Sommer et al 2018.  Use of the data should reference both the DPAA CIL Osteometric Reference Set and the associated Sommer paper.
 
