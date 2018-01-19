@@ -17,7 +17,7 @@ This tool generates p-values for skeletal element pairs using a reference set. L
 ## Installation from Source
 ### Requirements
 
-This tool requires r packages for some of its statistical functions. 
+This tool requires R packages (R version 3.3) for some of its statistical functions. 
 * Rcpp
 * RInside
 
@@ -26,7 +26,7 @@ To install these packages using R, use the following commands in R:
 > install.packages("Rcpp")
 > install.packages("RInside")
 ```
-Once the packages are installed, `cd` into the main directory of the SE Compare tool and run `make` to build the executable.
+Once the packages are installed, `cd` into the main directory of the SE Compare tool and run `make` to build the executable. 
 
 The resulting binary **SE_Compare** will be located in the **build** directory.
 
