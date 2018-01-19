@@ -31,7 +31,7 @@ Once the packages are installed, `cd` into the main directory of the SE Compare 
 The resulting binary **SE_Compare** will be located in the **build** directory.
 
 ## Binary
-Precompiled binary versions of SE Compare are available for Linux and Mac OS. Requires R/3.3.  
+Precompiled binary versions of SE Compare are available for Linux and Mac OS. Requires R. (See above).  
 
 ```
 SE_Compare_x86_64-pc-linux-gnu
